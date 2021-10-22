@@ -13,7 +13,7 @@ This repository use JSON Web Token(JWT).
 
 ## Example
 
-This example shows that one could perform login request and get the token in the response header if the password was correct. However, if the password was incorrect, one would get response code 401:
+This example shows that one could perform login request and get the token in the response header if the password was correct. However, one would get response code 401 if the password was incorrect:
 
 ```java
 @WebMvcTest
