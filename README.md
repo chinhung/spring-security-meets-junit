@@ -11,11 +11,9 @@ Thanks for the MockMvc object provided by Spring, it is useful to perform automa
 
 This repository uses JSON Web Token(JWT).
 
-## Test Cases
+## Setup 
 
-### Login Test
-
-The two test cases show that one could perform login request and get the token in the response header if the password was correct. However, one would get `401 Unauthorized` if the password was incorrect:
+The annotation `@WebMvcTest` is required to inject the WebApplicationContext by Spring with `@Autowired` annotation. Use `MockMvcBuilders.webAppContextSetup` to setup the MockMvc object, and apply the Spring Security:
 
 ```java
 @WebMvcTest
@@ -30,6 +28,22 @@ public class LoginTest {
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).apply(springSecurity()).build();
     }
+    
+    // ...
+}
+```
+
+## Test Cases
+
+### Login Test
+
+The two test cases show that one could perform login request and get the token in the response header if the password was correct. However, one would get `401 Unauthorized` if the password was incorrect:
+
+```java
+@WebMvcTest
+public class LoginTest {
+
+    // ...
 
     @Test
     public void testLoginSuccess() throws Exception {
