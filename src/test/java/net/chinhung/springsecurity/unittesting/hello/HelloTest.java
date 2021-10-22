@@ -17,7 +17,7 @@ public class HelloTest {
 
     private String USER_JWT_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxOTA5NTUxMzkyfQ.-zLUaXSWCoWN0Wr877qeyiYrmfwR4WTy6CSFw6TDkBZCYGIkJLYVKNS4H9wrC4WHZiu2LPu6k_dNuTLXCbldYQ";
 
-    private String ADMIN_JWT_TOKEN = "Bearer Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTkwOTU1MTQ0NX0.CwL9LNjN02VrDMOXtzNNwBE1SbEe0_Up0cAIfEeEr0BQMyuuYkZiW4ZZjY7kBRF6o0P_uumo-JSaxc_xvwrvkQ";
+    private String ADMIN_JWT_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTkwOTU1MTQ0NX0.CwL9LNjN02VrDMOXtzNNwBE1SbEe0_Up0cAIfEeEr0BQMyuuYkZiW4ZZjY7kBRF6o0P_uumo-JSaxc_xvwrvkQ";
 
     @Autowired
     public WebApplicationContext wac;
