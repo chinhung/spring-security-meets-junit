@@ -33,7 +33,6 @@ public class LoginTest {
     public void testLoginSuccess() throws Exception {
         mockMvc.perform(post("/login").content("{\"account\":\"user\",\"password\":\"password\"}"))
                 .andExpect(status().isOk())
-                .andExpect(header().exists("token"))
                 .andExpect(header().string("token", matchesPattern(Pattern.compile("^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*$"))));
     }
 
