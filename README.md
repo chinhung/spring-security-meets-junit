@@ -13,7 +13,9 @@ This repository use JSON Web Token(JWT).
 
 ## Example
 
-This example shows that one could perform login request and get the token in the response header if the password was correct. However, one would get response code 401 if the password was incorrect:
+### Login Test
+
+The two test case show that one could perform login request and get the token in the response header if the password was correct. However, one would get response code 401 if the password was incorrect:
 
 ```java
 @WebMvcTest
@@ -46,8 +48,9 @@ public class LoginTest {
 }
 ```
 
+### Authority Test
 
-This example shows that a user can visit the authenticated url if the request was authorized with the token in the request header. And one will get response code 403 if the user was without the required authority:
+The two test cases show that a user can visit the authenticated url if the request was authorized with the token in the request header. And one will get response code 403 if the user was without the required authority:
 
 ```java
 @WebMvcTest
