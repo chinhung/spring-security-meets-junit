@@ -11,11 +11,11 @@ Thanks for the MockMvc object provided by Spring, it is useful to perform automa
 
 This repository use JSON Web Token(JWT).
 
-## Example
+## Test Cases
 
 ### Login Test
 
-The two test case show that one could perform login request and get the token in the response header if the password was correct. However, one would get response code 401 if the password was incorrect:
+The two test cases show that one could perform login request and get the token in the response header if the password was correct. However, one would get response code 401 if the password was incorrect:
 
 ```java
 @WebMvcTest
