@@ -9,6 +9,8 @@ This is a demo repository for validating the spring security configurations via 
 
 Thanks for the MockMvc object provided by Spring, it is useful to perform automated testing to validate the configurations of Spring Security with JUnit. The url mapping, parameter setting, authentication process and the authorization process could also be validated. And it is helpful to develop the api with Test-Driven Development.
 
+This repository use JSON Web Token(JWT).
+
 ## Example
 
 This example shows that one could perform login request and get the token in the response header if the password was correct. However, if the password was incorrect, one would get response code 401:
@@ -40,6 +42,27 @@ public class LoginTest {
         mockMvc.perform(post("/login").content("{\"account\":\"admin\",\"password\":\"xxxxxxxx\"}"))
                 .andExpect(status().isUnauthorized());
     }
+    
+    // ...
+}
+```
+
+
+This example shows that a user can visit the authenticated url if the request header contained the correct token:
+
+```java
+@WebMvcTest
+public class HelloTest {
+
+    // ...
+
+    @Test
+    public void testUserSuccess() throws Exception {
+        mockMvc.perform(get("/hello/user").header("Authorization", USER_JWT_TOKEN))
+                .andExpect(status().isOk());
+    }
+    
+    // ...
 }
 ```
 
