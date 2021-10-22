@@ -65,7 +65,7 @@ public class HelloTest {
 }
 ```
 
-## Unit Tests
+## Run Tests
 ```
 ./gradlew test
 ```
