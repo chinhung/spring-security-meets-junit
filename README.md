@@ -44,6 +44,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+## Authenticated Api
+
+```java
+@RestController()
+@RequestMapping(value="/hello")
+public class HelloController {
+
+    @PreAuthorize("hasAuthority('hello.user')")
+    @GetMapping("/user")
+    public String user() {
+        return "Hello User!";
+    }
+
+    @PreAuthorize("hasAuthority('hello.admin')")
+    @GetMapping("/admin")
+    public String admin() {
+        return "Hello Admin!";
+    }
+}
+```
+
 ## Testing Setup 
 
 The annotation `@WebMvcTest` is required to inject the WebApplicationContext by Spring with `@Autowired` annotation. Use `MockMvcBuilders.webAppContextSetup` to setup the MockMvc object, and apply the Spring Security:
