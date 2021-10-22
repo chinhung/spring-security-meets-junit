@@ -47,7 +47,7 @@ public class LoginTest {
 ```
 
 
-This example shows that a user can visit the authenticated url if the request header contained the correct token:
+This example shows that a user can visit the authenticated url if this request was authorized with the token in the request header. And one will get response code 403 if the user was without the required authority:
 
 ```java
 @WebMvcTest
@@ -59,6 +59,12 @@ public class HelloTest {
     public void testUserSuccess() throws Exception {
         mockMvc.perform(get("/hello/user").header("Authorization", USER_JWT_TOKEN))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testUserFail_WithoutAuthority() throws Exception {
+        mockMvc.perform(get("/hello/user").header("Authorization", ADMIN_JWT_TOKEN))
+                .andExpect(status().isForbidden());
     }
     
     // ...
