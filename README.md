@@ -47,7 +47,7 @@ public class LoginTest {
 ```
 
 
-This example shows that a user can visit the authenticated url if this request was authorized with the token in the request header. And one will get response code 403 if the user was without the required authority:
+This example shows that a user can visit the authenticated url if the request was authorized with the token in the request header. And one will get response code 403 if the user was without the required authority:
 
 ```java
 @WebMvcTest
