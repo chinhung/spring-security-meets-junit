@@ -11,6 +11,39 @@ Thanks for the MockMvc object provided by Spring, it is useful to perform automa
 
 This repository uses JSON Web Token(JWT).
 
+## Spring Security Config
+
+```java
+@Configuration
+@EnableWebSecurity()
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // ...
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(getUserDetailsService());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable();
+
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/hello/**").authenticated()
+                .and()
+                .addFilterBefore(getJwtFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(getLoginFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+    }
+    
+    // ...
+}
+```
+
 ## Testing Setup 
 
 The annotation `@WebMvcTest` is required to inject the WebApplicationContext by Spring with `@Autowired` annotation. Use `MockMvcBuilders.webAppContextSetup` to setup the MockMvc object, and apply the Spring Security:
