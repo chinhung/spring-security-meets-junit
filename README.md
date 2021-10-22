@@ -9,7 +9,7 @@ This is a demo repository for validating the Spring Security configurations via 
 
 Thanks for the MockMvc object provided by Spring, it is useful to perform automated testing to validate the configurations of Spring Security with JUnit. The url mapping, parameter setting, authentication process and the authorization process could also be validated. And it is helpful to develop the api with Test-Driven Development.
 
-This repository use JSON Web Token(JWT).
+This repository uses JSON Web Token(JWT).
 
 ## Test Cases
 
