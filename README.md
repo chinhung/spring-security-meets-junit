@@ -5,6 +5,44 @@
 
 This is a demo repository for validating the spring security configurations via unit testing.
 
+## Introduction
+
+Thanks for the MockMvc object provided by Spring, it is useful to perform automated testing to validate the configurations of Spring Security with JUnit. The url mapping, parameter setting, authentication process and the authorization process could also be validated. And it is helpful to develop the api with Test-Driven Development.
+
+## Example
+
+This example shows that one could perform login request and get the token in the response header if the password was correct. However, if the password was incorrect, one would get response code 401:
+
+```java
+@WebMvcTest
+public class LoginTest {
+
+    @Autowired
+    public WebApplicationContext wac;
+
+    public MockMvc mockMvc;
+
+    @BeforeEach
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).apply(springSecurity()).build();
+    }
+
+    @Test
+    public void testLoginSuccess() throws Exception {
+        mockMvc.perform(post("/login").content("{\"account\":\"user\",\"password\":\"password\"}"))
+                .andExpect(status().isOk())
+                .andExpect(header().exists("token"))
+                .andExpect(header().string("token", matchesPattern(Pattern.compile("^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*$"))));
+    }
+
+    @Test
+    public void testLoginFailed_WrongPassword() throws Exception {
+        mockMvc.perform(post("/login").content("{\"account\":\"admin\",\"password\":\"xxxxxxxx\"}"))
+                .andExpect(status().isUnauthorized());
+    }
+}
+```
+
 ## Unit Tests
 ```
 ./gradlew test
