@@ -38,7 +38,7 @@ public class LoginTest {
 
     @Test
     public void testLoginFailed_WrongPassword() throws Exception {
-        mockMvc.perform(post("/login").content("{\"account\":\"admin\",\"password\":\"xxxxxxxx\"}"))
+        mockMvc.perform(post("/login").content("{\"account\":\"user\",\"password\":\"xxxxxxxx\"}"))
                 .andExpect(status().isUnauthorized());
     }
     
