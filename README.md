@@ -11,6 +11,10 @@ Thanks for the MockMvc object provided by Spring, it is convenient to perform au
 
 This repository uses JSON Web Token(JWT) as the validation policy.
 
+## Run Tests
+```
+./gradlew test
+```
 ## Spring Security Config
 
 ```java
@@ -140,9 +144,4 @@ public class HelloTest {
     
     // ...
 }
-```
-
-## Run Tests
-```
-./gradlew test
 ```
